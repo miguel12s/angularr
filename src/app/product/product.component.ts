@@ -10,8 +10,8 @@ import {
 import { Router } from '@angular/router';
 
 import { DescripcionComponent } from '../descripcion/descripcion.component';
-import { Product } from '../interfaces/product.interface';
-import { rateCount } from '../interfaces/rate.interface';
+import { Product } from '../header/interfaces/product.interface';
+import { rateCount } from '../header/interfaces/rate.interface';
 import { productService } from '../header/services/product.service';
 
 @Component({
@@ -21,20 +21,23 @@ import { productService } from '../header/services/product.service';
   changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class ProductComponent {
-  @Input() product!: any;
-  numberOfStairs: number[] = [];
-  @Output() addCartToClic = new EventEmitter<Product>();
-  products: any = [];
+  @Input() product!:Product;
   
+  numberOfStars: number[] = [];
+  @Output() addCartToClic = new EventEmitter<Product>();
+  products: Product[] = [];
+  price$=this.productService.priceObservable
+  category$=this.productService.categoryObservable
+
 
   constructor(
-    private descriptionComponent: DescripcionComponent,private router:Router
+    private descriptionComponent: DescripcionComponent,private router:Router,private productService:productService
   ) {}
 
-  paintStars(star: rateCount): number[] {
-    this.numberOfStairs = this.descriptionComponent.paintStars(star);
+  paintStars(star: number): number[] {
+    this.numberOfStars = this.descriptionComponent.paintStars(star);
 
-    return this.numberOfStairs;
+    return this.numberOfStars;
   }
 
   addCartToClick(product: Product): void {

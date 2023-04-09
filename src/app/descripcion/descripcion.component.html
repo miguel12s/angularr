@@ -20,7 +20,7 @@
           <br />
         </mat-card-title>
         <div class="justify-content-start icon">
-          <mat-icon *ngFor="let product of paintStars(product.rating[indice])">star</mat-icon>
+          <mat-icon *ngFor="let product of paintStars(product.rating.rate)">star</mat-icon>
         </div>
         <span>
           {{ product.description }}

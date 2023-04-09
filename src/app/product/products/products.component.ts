@@ -1,9 +1,11 @@
-import {  Component, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { tap } from 'rxjs';
-import { Product } from 'src/app/interfaces/product.interface';
+import { Product } from 'src/app/header/interfaces/product.interface';
 import { productService } from '../../header/services/product.service';
 import { ToastrService } from 'ngx-toastr';
 import { SpinnerService } from '../services/spinner.service';
+import { Router } from '@angular/router';
+import { getLocaleMonthNames } from '@angular/common';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -11,44 +13,69 @@ import { SpinnerService } from '../services/spinner.service';
 })
 export class ProductsComponent {
   pageInit = true;
-  products: Product[] = [
-    {  id:1,
-      title:'',
-      price:0,
-      category:'',
-      description:'',
-      image:'',
-    rating:[],
-  qty:0}
-  ];
+  products: Product[] = [];
   categories: Array<string> = [];
   categorie = '';
   page = 0;
   dat = 0;
   searche: string = '';
-  spinnerService=inject(SpinnerService)
+  spinnerService = inject(SpinnerService);
+  category$ = this.productService.categoryObservable;
+  category='';
+
   constructor(
     private productService: productService,
     private toaster: ToastrService
-  ) {}
+  ) {
+    this.categorie = this.productService.Category;
+  }
 
   ngOnInit() {
     this.productService.products
       .pipe(
-        tap((data: Product[]) => (this.products = data)),
-        tap((data: Product[]) =>
-          data.forEach((element: Product) => {
-            this.dat = element.id - 1;
+        tap((response: Product[]) => {
+          this.products = response;
 
-            this.products[this.dat].title = element.title.toLowerCase();
-          })
-        )
+          response.forEach(
+            (product) =>
+              (this.products[product.id - 1].title =
+                product.title.toLowerCase())
+          );
+
+          this.category$
+            .pipe(
+              tap((category: string) => {
+                if (category === '' )
+                 return this.products
+
+
+                if(category==='All'){
+               
+                   this.products=response
+                   return this.products
+                }
+
+               
+                  
+                this.products = response.filter(
+                  (products) => products.category === category
+                );
+                return [];
+              })
+            )
+            .subscribe();
+        })
       )
-
       .subscribe();
 
-    this.productService.categories
-      .pipe(tap((data: Array<string>) => (this.categories = data)))
+      this.productService.categories
+      .pipe(
+        tap((response: Array<string>) => {
+          this.categories = response;
+          this.categories.push('All')
+          this.categories.reverse()
+        })
+      )
       .subscribe();
   }
 
@@ -86,5 +113,17 @@ export class ProductsComponent {
 
   filterCategory(category: string) {
     this.categorie = category;
+  }
+
+  goToProducts() {
+    window.location.reload();
+  }
+
+  cambio(category: string) {
+    
+    this.category=category
+    console.log(category);
+    
+    this.productService.setObservable(category)
   }
 }

@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { tap } from 'rxjs';
-import { Product } from '../interfaces/product.interface';
-import { rateCount } from '../interfaces/rate.interface';
+import { Product } from '../header/interfaces/product.interface';
+import { rateCount } from '../header/interfaces/rate.interface';
 import { productService } from '../header/services/product.service';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2'; 
@@ -38,7 +38,7 @@ export class DescripcionComponent implements OnInit {
     private cdr: ChangeDetectorRef
   ) {}
 
-  paintStars(numberStairs: rateCount): Array<number> {
+  paintStars(numberStairs: number): Array<number> {
 
     let stairs = String(numberStairs);
 
