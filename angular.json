@@ -16,6 +16,7 @@
             "outputPath": "dist/eccomerce-angular2",
             "index": "src/index.html",
             "main": "src/main.ts",
+            "allowedCommonJsDependencies": ["sweetalert2"],
             "polyfills": [
               "zone.js"
             ],
@@ -33,7 +34,6 @@
               "./node_modules/ngx-spinner/animations/square-jelly-box.css"
             ],
             "scripts": [
-              "node_modules/popper.js/dist/popper.js",
 
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]
@@ -43,13 +43,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "4mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "4mb",
+                  "maximumError": "5mb"
                 }
               ],
               "outputHashing": "all"

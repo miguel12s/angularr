@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import {  Router } from '@angular/router';
 import { tap } from 'rxjs';
 import { Product } from '../header/interfaces/product.interface';
-import { rateCount } from '../header/interfaces/rate.interface';
 import { productService } from '../header/services/product.service';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2'; 

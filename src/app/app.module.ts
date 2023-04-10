@@ -15,7 +15,6 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { InterceptorService } from './product/services/interceptor.service';
 import { ActualizarComponent } from './actualizar/actualizar.component';
 import { MatOptionModule } from '@angular/material/core';
-import { MatLabel } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { ActualizarModule } from './actualizar/actualizar.module';
 
