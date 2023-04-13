@@ -9,17 +9,17 @@ import { DescripcionComponent } from '../descripcion/descripcion.component';
 
 import { ProductRoutingModule } from './product-routing.module';
 import { ProductComponent } from './product.component';
-import { productService } from '../header/services/product.service';
 import { ProductsComponent } from './products/products.component';
-import { FiltroPipe } from './pipe/filtro.pipe';
 import {MatSelectModule} from '@angular/material/select'
 import {  NgxSpinnerModule } from 'ngx-spinner';
+import { PaginacionComponent } from './components/paginacion/paginacion.component';
+import { FiltroPipe } from './pipe/filtro.pipe';
 
 
 
 @NgModule({
   declarations: [
-ProductComponent, ProductsComponent, FiltroPipe
+ProductComponent, ProductsComponent, PaginacionComponent, FiltroPipe
   ],
   imports: [
     ProductRoutingModule,MatCardModule,MatInputModule,MatIconModule,MatButtonModule,CommonModule,MatSelectModule,NgxSpinnerModule

@@ -19,6 +19,7 @@ export class DescripcionComponent implements OnInit {
   ]
   counter: number = 0;
   ngOnInit(): void {
+console.log('entrastes a');
 
     this.productService.cartObservable
       .pipe(
@@ -99,7 +100,7 @@ this.productService.updateQty(product)
     Swal.fire("Compra realizada", "Compra realizada con exito. Se reiniciara el carrito", "success").then(
       (result:any)=>{
         if(result.isConfirmed){
-          this.router.navigate(['/products'])
+          this.router.navigate(['/products/1'])
           this.productService.resetCart()
         }
       }

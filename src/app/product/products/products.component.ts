@@ -1,34 +1,44 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject,OnInit ,ChangeDetectorRef} from '@angular/core';
 import { tap } from 'rxjs';
 import { Product } from 'src/app/header/interfaces/product.interface';
 import { productService } from '../../header/services/product.service';
 import { ToastrService } from 'ngx-toastr';
 import { SpinnerService } from '../services/spinner.service';
-import { Router } from '@angular/router';
-import { getLocaleMonthNames } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { DataService } from 'src/app/header/services/data.service';
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
 })
-export class ProductsComponent {
-  pageInit = true;
+export class ProductsComponent implements OnInit {
+  pageInit = 0;
   products: Product[] = [];
   categories: Array<string> = [];
   categorie = '';
-  page = 0;
+  page = 1;
   dat = 0;
   searche: string = '';
   spinnerService = inject(SpinnerService);
   category$ = this.productService.categoryObservable;
   category='';
-
+  dataService=inject(DataService)
   constructor(
     private productService: productService,
-    private toaster: ToastrService
+    private toaster: ToastrService,
+    private routerActive:ActivatedRoute,
+    private cdr:ChangeDetectorRef
+
   ) {
     this.categorie = this.productService.Category;
+   this.page= this.routerActive.snapshot.params['page']
+   console.log(this.page);
+   
+
   }
+
+  
 
   ngOnInit() {
     this.productService.products
@@ -90,23 +100,9 @@ export class ProductsComponent {
     });
   }
 
-  increment(): void {
-    this.page += 6;
-    this.pageInit = false;
-  }
-
-  decrement(): void {
-    if (this.page > 0) {
-      this.page -= 6;
-      this.pageInit = false;
-    }
-    if (this.page == 0) {
-      this.pageInit = true;
-    }
-  }
-
+ 
   searchProducts(search: string) {
-    console.log(search);
+   
 
     this.searche = search;
   }
@@ -126,4 +122,22 @@ export class ProductsComponent {
     
     this.productService.setObservable(category)
   }
+
+  onClick(page:number){
+    
+this.page=page
+if(page===1){
+  this.pageInit=0
+}
+if(page>1){
+  this.pageInit=page+5
+}
+
+    
+  }
+
+
+
+
+
 }

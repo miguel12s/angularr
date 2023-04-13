@@ -6,11 +6,11 @@ import { tap } from 'rxjs';
   selector: 'app-header',
   template: `
     <mat-toolbar class="d-flex    " color="primary">
-      <span routerLink="products" class="me-5"> My store </span>
+      <span routerLink="products/1" class="me-5"> My store </span>
     
 
       <div class=" d-flex contenedor  w-100 justify-content-end">
-        <app-cart class="shopping-cart" (click)="goToCheckout()"></app-cart>
+        <app-cart class="shopping-cart" (click)="goToCheckout()" />
       </div>
     </mat-toolbar>
   `,
@@ -22,7 +22,8 @@ export class HeaderComponent implements OnInit {
   public category = '';
   categories: string[] = ['All'];
   goToCheckout() {
-    this.router.navigate(['products/description']);
+    
+    this.router.navigate(['description']);
   }
   ngOnInit(): void {
   

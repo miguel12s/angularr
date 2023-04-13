@@ -1,0 +1,23 @@
+<div class=" d-flex justify-content-center align-items-center " >
+    <nav aria-label="Page navigation example ">
+      <ul class="pagination d-flex gap-2">
+        <li class="page-item"><button (click)="decrement()" class="btn btn-primary " [disabled]="currentPage===1" [routerLink]="['products',currentPage]"
+
+          
+            
+            >Previous</button></li>
+        <li class="page-item" *ngFor="let pag of numberOfPages"><button class="btn btn-primary" [disabled]="currentPage===pag " (click)="changePage(pag)"  [routerLink]="['products',pag]"
+           >{{pag}} </button></li>
+          
+
+        
+        <li class="page-item"><button class="btn btn-primary" 
+            [disabled]="currentPage==4"  (click)="increment(page)"  [routerLink]="['products',currentPage+1]"
+            >Next</button></li>
+
+
+      </ul>
+
+    </nav>
+
+

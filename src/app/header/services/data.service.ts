@@ -1,20 +1,16 @@
-import { HttpClient, HttpClientModule } from "@angular/common/http";
-import { Injectable, inject } from "@angular/core";
-import { Observable } from "rxjs";
-import { Product } from "src/app/header/interfaces/product.interface";
-
+import { HttpClient } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Product } from 'src/app/header/interfaces/product.interface';
 
 @Injectable({
-    providedIn:'root'
+  providedIn: 'root',
 })
-export class DataService{
+export class DataService {
+  private httpClient = inject(HttpClient);
+  private url = 'https://fakestoreapi.com/products?limit=5';
 
-private httpClient=inject(HttpClient)
-private url= 'https://fakestoreapi.com/products';
-
-setProduct(product:Product,indice:number):Observable<Product>{
-    return this.httpClient.patch<Product>(`${this.url}/${indice}`,product)
-}
-
-
+  getProductForNumber(): Observable<Product[]> {
+    return this.httpClient.get<Product[]>(`${this.url}`);
+  }
 }

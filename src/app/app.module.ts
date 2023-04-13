@@ -19,7 +19,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ActualizarModule } from './actualizar/actualizar.module';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent,CartComponent,ActualizarComponent],
+  declarations: [AppComponent, HeaderComponent,CartComponent,ActualizarComponent,],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
