@@ -7,6 +7,7 @@ const routes: Routes = [
   {path:'description',loadChildren:()=>import('./descripcion/description.module').then (m=>m.DescriptionModule)},
  
   {path:'',redirectTo:'products/1',pathMatch:'full'},
+  {path:'**',redirectTo:'products/1',pathMatch:'full'}
  
   
 ];
