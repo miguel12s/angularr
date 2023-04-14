@@ -25,7 +25,7 @@ export class PaginacionComponent   {
   numberOfPages = [1, 2, 3, 4];
 router=inject(ActivatedRoute)
 constructor(){
-  this.currentPage=Number(this.router.snapshot.params['page'])
+  this.currentPage=1
 this.page=this.currentPage
 
   

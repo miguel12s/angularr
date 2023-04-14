@@ -32,8 +32,7 @@ export class ProductsComponent implements OnInit {
 
   ) {
     this.categorie = this.productService.Category;
-   this.page= this.routerActive.snapshot.params['page']
-   console.log(this.page);
+   this.page=1
    
 
   }

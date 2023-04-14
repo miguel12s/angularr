@@ -14,6 +14,7 @@ import {MatSelectModule} from '@angular/material/select'
 import {  NgxSpinnerModule } from 'ngx-spinner';
 import { PaginacionComponent } from './components/paginacion/paginacion.component';
 import { FiltroPipe } from './pipe/filtro.pipe';
+import { NgOptimizedImage } from '@angular/common';
 
 
 
@@ -22,7 +23,7 @@ import { FiltroPipe } from './pipe/filtro.pipe';
 ProductComponent, ProductsComponent, PaginacionComponent, FiltroPipe
   ],
   imports: [
-    ProductRoutingModule,MatCardModule,MatInputModule,MatIconModule,MatButtonModule,CommonModule,MatSelectModule,NgxSpinnerModule
+    ProductRoutingModule,MatCardModule,MatInputModule,MatIconModule,MatButtonModule,CommonModule,MatSelectModule,NgxSpinnerModule,NgOptimizedImage
   ],
   
   providers:[DescripcionComponent]  

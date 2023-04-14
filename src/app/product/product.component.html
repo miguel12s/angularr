@@ -1,9 +1,9 @@
 
-<mat-card class="card ">
+<mat-card class="card " >
     <mat-card-header>
     
       <mat-card-title>
-        <div class="container-img img-fluid">
+        <div class="container-img img-fluid  ">
           <div class="star">
             <mat-icon
               class="star"
@@ -12,7 +12,7 @@
               star
             </mat-icon>
           </div>
-          <img [src]="product.image" alt="" />
+          <img  [ngSrc]="product.image" [alt]="product.title" width="200" height="100"/>
          <span class="category">{{product.category}}</span> 
         </div>
         

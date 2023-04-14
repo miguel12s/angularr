@@ -108,8 +108,8 @@ background-color:#FBD83D  ;
 
 @media screen and (max-width:456px) {
     img{
-        max-width: 15rem;
-        max-height: 15rem;
+        max-width: 14rem;
+        max-height: 14rem;
       text-align: center;
     }
 

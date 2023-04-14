@@ -6,7 +6,7 @@ import { MatCardModule} from '@angular/material/card'
 import { MatInputModule} from '@angular/material/input'
 import {MatIconModule} from '@angular/material/icon'  
 import { MatButtonModule} from '@angular/material/button'  
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { DescripcionComponent } from './descripcion.component';
 
 
@@ -15,7 +15,7 @@ import { DescripcionComponent } from './descripcion.component';
     DescripcionComponent
   ],
   imports: [
-   DescriptionRoutingModule,HttpClientModule,MatCardModule,MatInputModule,MatIconModule,MatButtonModule,CommonModule
+   DescriptionRoutingModule,HttpClientModule,MatCardModule,MatInputModule,MatIconModule,MatButtonModule,CommonModule,NgOptimizedImage
   ],
   exports:[MatCardModule,MatIconModule,MatInputModule,MatButtonModule,DescripcionComponent],
   providers:[]
