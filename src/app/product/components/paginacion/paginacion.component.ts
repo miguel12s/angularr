@@ -18,9 +18,11 @@ import { Product } from 'src/app/header/interfaces/product.interface';
 export class PaginacionComponent   {
   @Input() page!: number;
   @Input() products!: Product[];
+  @Input() currentPage!:number
+  @Input() numberOfPage!:number[]
   @Output() onClick = new EventEmitter<number>();
 
-  currentPage=1 ;
+
   product!: Product[];
   numberOfPages = [1, 2, 3, 4];
 router=inject(ActivatedRoute)

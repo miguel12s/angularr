@@ -139,25 +139,15 @@ this.quantity$.next(this.product.length)
   }
 
 
-  setCategory(category:string){
-    this.category=category
-  }
-
-  get Category(){
-return this.category
-  }
-
-
-   setObservable(category:string){
-    this.category$.next(category)
-  }
+ 
 
   get categoryObservable():Observable<string>{
     return this.category$.asObservable()
   }
 
-  get ultimeValue():string{
-    return this.category$.getValue()
+   setProductFilter(product:Product[]):Product[]{
+   
+return product    
   }
 
 

@@ -24,14 +24,14 @@ export class ProductsComponent implements OnInit {
   category$ = this.productService.categoryObservable;
   category='';
   dataService=inject(DataService)
+  numberOfPage:number[]=[]
+  
   constructor(
     private productService: productService,
     private toaster: ToastrService,
-    private routerActive:ActivatedRoute,
-    private cdr:ChangeDetectorRef
+    
 
   ) {
-    this.categorie = this.productService.Category;
    this.page=1
    
 
@@ -51,41 +51,12 @@ export class ProductsComponent implements OnInit {
                 product.title.toLowerCase())
           );
 
-          this.category$
-            .pipe(
-              tap((category: string) => {
-                if (category === '' )
-                 return this.products
-
-
-                if(category==='All'){
-               
-                   this.products=response
-                   return this.products
-                }
-
-               
-                  
-                this.products = response.filter(
-                  (products) => products.category === category
-                );
-                return [];
-              })
-            )
-            .subscribe();
+          
         })
       )
       .subscribe();
 
-      this.productService.categories
-      .pipe(
-        tap((response: Array<string>) => {
-          this.categories = response;
-          this.categories.push('All')
-          this.categories.reverse()
-        })
-      )
-      .subscribe();
+    
   }
 
   quantity$ = this.productService.quantityObservable;
@@ -104,32 +75,26 @@ export class ProductsComponent implements OnInit {
    
 
     this.searche = search;
+    this.pageInit=1
+    this.page=1
+    
   }
 
-  filterCategory(category: string) {
-    this.categorie = category;
-  }
-
+  
   goToProducts() {
     window.location.reload();
   }
 
-  cambio(category: string) {
-    
-    this.category=category
-    console.log(category);
-    
-    this.productService.setObservable(category)
-  }
+
 
   onClick(page:number){
-    
+    this.pageInit=0
 this.page=page
 if(page===1){
   this.pageInit=0
 }
 if(page>1){
-  this.pageInit=page+5
+  this.pageInit=page*5-5
 }
 
     

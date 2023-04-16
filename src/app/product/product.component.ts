@@ -5,7 +5,9 @@ import {
   EventEmitter,
   Injectable,
   Input,
+  OnChanges,
   Output,
+  SimpleChanges,
 } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -20,19 +22,22 @@ import { productService } from '../header/services/product.service';
   styleUrls: ['./product.component.css'],
   changeDetection:ChangeDetectionStrategy.OnPush
 })
-export class ProductComponent {
+export class ProductComponent  {
   @Input() product!:Product;
-  
   numberOfStars: number[] = [];
   @Output() addCartToClic = new EventEmitter<Product>();
   products: Product[] = [];
-  price$=this.productService.priceObservable
-  category$=this.productService.categoryObservable
 
+
+ 
 
   constructor(
-    private descriptionComponent: DescripcionComponent,private router:Router,private productService:productService
-  ) {}
+    private descriptionComponent: DescripcionComponent
+  ) {
+    
+  }
+
+
 
   paintStars(star: number): number[] {
     this.numberOfStars = this.descriptionComponent.paintStars(star);

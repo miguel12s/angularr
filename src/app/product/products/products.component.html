@@ -10,7 +10,7 @@
   <p style="color: white"> Loading... </p>
 </ngx-spinner>
 
-<section class="products" *ngIf="products[0].category!==''">
+<section class="products" *ngIf="products[0].category.length!==0">
   <app-product *ngFor="let product  of products|filtro:pageInit:searche " [product]="product"
     (addCartToClic)="addCartToClick($event)" />
 
@@ -26,7 +26,7 @@
   </div>
 </div> 
 
-<app-paginacion *ngIf="(products|filtro:pageInit:searche).length!=0"  [page]="page" [products]="products"  (onClick)="onClick($event)"></app-paginacion>
+<app-paginacion *ngIf="(products|filtro:pageInit:searche).length!=0     "  [page]="page" [products]="products" [numberOfPage]="numberOfPage"  (onClick)="onClick($event)"></app-paginacion>
 
 
    
