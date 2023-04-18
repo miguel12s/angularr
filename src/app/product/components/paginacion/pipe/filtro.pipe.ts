@@ -13,12 +13,12 @@ export class FiltroPipe implements PipeTransform {
 
 
     search = search.toLowerCase()
+if(pageInit===1)pageInit--
 
-    if (search.length != 0){
-      this.productService.setProductFilter(product.filter(products => products.title.includes(search)))
-      
+
+    if (search.length != 0)
    return product.filter(products => products.title.includes(search)).slice(pageInit,pageInit+5)
-    }
+    
     return product.slice(pageInit, pageInit + 5)
   }
 }

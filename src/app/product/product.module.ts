@@ -13,8 +13,8 @@ import { ProductsComponent } from './products/products.component';
 import {MatSelectModule} from '@angular/material/select'
 import {  NgxSpinnerModule } from 'ngx-spinner';
 import { PaginacionComponent } from './components/paginacion/paginacion.component';
-import { FiltroPipe } from './pipe/filtro.pipe';
 import { NgOptimizedImage } from '@angular/common';
+import { FiltroPipe } from './components/paginacion/pipe/filtro.pipe';
 
 
 
